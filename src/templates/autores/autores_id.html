@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Datos del Autor</h2>
+    <div>
+        <ul>
+            <li><b>Id: </b>{{autor.id}}
+            <li><b>Nombre: </b>{{autor.nombre}}</li>
+            <li><b>Fecha de nacimiento: </b>{{autor.fecha_nacimiento}}</li>
+            <li><b>Fecha de fallecimiento: </b>{{autor.fecha_fallecimiento}}</li>
+        </ul>
+    </div>
+    <button type="button" class="btn btn-outline-danger">
+        <a href="{% url 'autores:autor_actualizar' autor.id %}"> -- Editar --</a>
+    </button>
+    <button type="button" class="btn btn-outline-danger">
+        <a href="{% url 'autores:autores_list' %}"> -- Volver al listado --</a>
+    </button>
+
+{% endblock content %}

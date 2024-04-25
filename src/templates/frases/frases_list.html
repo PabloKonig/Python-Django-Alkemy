@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Listado de frases</h2><br>
+    {% for object in lista_de_frases %}
+
+    <ul>
+        <li>{{object}}</li>
+    </ul>
+
+    {% endfor %}
+
+{% endblock content %}
