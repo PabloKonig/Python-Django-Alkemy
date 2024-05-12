@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, UpdateView
 from .models import Autor
 from django.urls import reverse_lazy
@@ -11,6 +11,12 @@ def autores_list(request):
 def autor_por_id(request, id):
         autor = get_object_or_404(Autor, id=id)
         return render(request, 'autores/autores_id.html', {'autor': autor})
+
+def autor_cambiar_estado(request, id):
+    autor = get_object_or_404(Autor, id=id)
+    autor.activo = not(autor.activo)
+    autor.save()
+    return redirect("autores:autores_list")
         
 class AutorCreateView(CreateView):
         model = Autor
@@ -23,3 +29,4 @@ class AutorUpdateView(UpdateView):
         fields = ['nombre', 'fecha_nacimiento', 'fecha_fallecimiento', 'activo', 'foto']
         template_name = 'autores/autores_edit.html'
         success_url = 'http://localhost:8000/autores/'
+

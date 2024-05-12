@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<h2 class="my-4">Listado de autores<h2>
+<h2 class="my-4">Listado de autores</h2>
 <table class="table table-hover">
-    <thead>
+    <thead class="table-secondary">
         <tr>
             <th scope="col"></th>
             <th scope="col">#</th>
@@ -11,6 +11,7 @@
             <th scope="col">Fecha Nacimiento</th>
             <th scope="col">Fecha Fallecimiento</th>
             <th scope="col">Activo</th>
+            <th scope="col"></th>
             <th scope="col">Editar</th>
             <th scope="col"></th>
             <th scope="col">Frases</th>
@@ -36,12 +37,22 @@
                 {% endif %}
             </td>
             <td>
+                <a href="{% url 'autores:autor_cambiar_estado' autor.pk %}">
+                    {% if autor.activo %}
+                      <img src="{% static 'img/encender.png' %}" alt="DESACTIVAR" width="30px" />
+                    {% else %}
+                      <img src="{% static 'img/apagar.png' %}" alt="ACTIVAR" width="30px" />
+                    {% endif %}
+                </a>
+            </td>
+            <td>
                 <a href="{% url 'autores:autor_actualizar' autor.pk %}">
                     <img src="{% static 'img/editar.png' %}" alt="Modificar" width="30px" />
                 </a>
             </td>
             <td>{{autor.frase_set.count}}</td>
-            <td>{% for texto in autor.frase_set.all %}
+            <td>
+                {% for texto in autor.frase_set.all %}
                 <ul>
                     <li>{{texto}}</li>
                 </ul>
@@ -52,5 +63,6 @@
     </tbody>
 </table>
 <a class="btn btn-outline-primary m-3" href="{% url 'autores:autores_crear' %}" role="button">Agregar autores</a>
+<a class="btn btn-outline-primary m-3" href="{% url 'frases:frases_list' %}" role="button">Listar frases</a>
 {% endblock content %}
 

@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <section class="alert alert-warning" role="alert">
+    <h2 class="my-4">Crear o actualizar datos del autor</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <table class="table table-dark table-striped">
@@ -26,6 +27,7 @@
                 <td>{{form.foto}}</td>
         </table>
         <button type="submit" class="btn btn-success">Guardar</button>
+        <a class="btn btn-success" href="{% url 'autores:autores_list' %}"> -- Volver al listado --</a>
     </form>
 
     {% if form.errors %}

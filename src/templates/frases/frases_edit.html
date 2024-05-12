@@ -2,10 +2,12 @@
 
 {% block content %}
 
+<h2 class="my-4">Agregar o editar frase</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar</button>
+    <button class="btn btn-outline-primary m-3" type="submit">Guardar</button>
+    <a class="btn btn-outline-primary m-3" href="{% url 'frases:frases_list' %}" role="button">Volver</a>
 </form>
 
 {% endblock content %}

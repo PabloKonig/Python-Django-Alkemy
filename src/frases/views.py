@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Frase
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 # Create your views here.
 class FrasesListView(generic.ListView):
@@ -13,5 +13,11 @@ class FrasesCreateView(CreateView):
     model = Frase
     #fields = '__all__'
     fields = ['autor', 'contenido', 'fecha']
+    template_name = 'frases/frases_edit.html'
+    success_url = 'http://localhost:8000/frases/'
+
+class FrasesUpdateView(UpdateView):
+    model = Frase
+    fields = '__all__'
     template_name = 'frases/frases_edit.html'
     success_url = 'http://localhost:8000/frases/'

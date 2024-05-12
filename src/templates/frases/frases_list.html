@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Listado de frases</h2><br>
+    <h2 class="my-4">Listado de frases</h2>
     {% for object in lista_de_frases %}
 
     <ul>
@@ -9,5 +9,6 @@
     </ul>
 
     {% endfor %}
-
+    <a class="btn btn-outline-primary m-3" href="{% url 'frases:frases_crear' %}" role="button">Agregar frases</a>
+    <a class="btn btn-outline-primary m-3" href="{% url 'autores:autores_list' %}" role="button">Inicio</a>
 {% endblock content %}
