@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
-<h2>Listado de autores<h2><br>
-<h3></h3>
+<h2 class="my-4">Listado de autores<h2>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -53,5 +51,6 @@
         {% endfor %}
     </tbody>
 </table>
+<a class="btn btn-outline-primary m-3" href="{% url 'autores:autores_crear' %}" role="button">Agregar autores</a>
 {% endblock content %}
 

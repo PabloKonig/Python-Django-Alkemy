@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from autores.views import autores_list
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', autores_list, name='autores_inicio_list'),
     path("prueba/", include('autores_prueba.urls', namespace='autores_prueba')),
     path("autores/", include('autores.urls', namespace='autores')),
     path("frases/", include('frases.urls', namespace='frases')),
