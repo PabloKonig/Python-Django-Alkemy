@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import autores_list, autor_por_id, AutorCreateView, AutorUpdateView, autor_cambiar_estado
+from .views import autores_list, autor_por_id, AutorCreateView, AutorUpdateView, autor_cambiar_estado, autores_buscar
 
 app_name = 'autores'
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('crear/', AutorCreateView.as_view(), name='autores_crear'),
     path('actualizar/<int:pk>/', AutorUpdateView.as_view(), name='autor_actualizar'),
     path('cambiar_estado/<int:id>/', autor_cambiar_estado, name='autor_cambiar_estado'),
+    path('buscar/', autores_buscar, name='buscar')
 ]

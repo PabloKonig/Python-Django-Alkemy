@@ -27,8 +27,9 @@
                 </ul>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Buscar autor" aria-label="Search">
+            <form class="d-flex" role="search" method="post" action="{% url 'autores:buscar' %}">
+              {% csrf_token %}
+              <input class="form-control me-2" type="search" placeholder="Buscar autor" aria-label="Search" name="buscar">
               <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
           </div>

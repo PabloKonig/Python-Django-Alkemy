@@ -22,11 +22,16 @@ class AutorCreateView(CreateView):
         model = Autor
         fields = ['nombre', 'fecha_nacimiento', 'fecha_fallecimiento', 'foto']
         template_name = 'autores/autores_edit.html'
-        success_url = 'http://localhost:8000/autores/'
+        success_url = reverse_lazy('autores:autores_list')
 
 class AutorUpdateView(UpdateView):
         model = Autor
         fields = ['nombre', 'fecha_nacimiento', 'fecha_fallecimiento', 'activo', 'foto']
         template_name = 'autores/autores_edit.html'
-        success_url = 'http://localhost:8000/autores/'
+        success_url = reverse_lazy('autores:autores_list')
 
+def autores_buscar(request):
+       if request.method == 'POST':
+                busqueda_autores = request.POST.get('buscar')
+                resultado = Autor.objects.filter(nombre__contains=busqueda_autores)
+                return render(request, 'autores/autores_list.html', {'autores': resultado})

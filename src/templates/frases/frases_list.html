@@ -1,14 +1,34 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-    <h2 class="my-4">Listado de frases</h2>
-    {% for object in lista_de_frases %}
-
-    <ul>
-        <li>{{object}}</li>
-    </ul>
-
-    {% endfor %}
+<h2 class="my-4">Listado de frases</h2>
+    
+<table class="table table-hover">
+    <thead class="table-secondary">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Frase</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Fecha</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for frase in lista_de_frases %}
+        <tr>
+            <td>{{frase.id}}</td>
+            <td>{{frase.contenido}}</td> 
+            <td>{{frase.autor.nombre}}</td> 
+            <td>{{frase.fecha}}</td> 
+            <td>
+                <a href="{% url 'frases:frases_modificar' frase.pk %}">
+                    <img src="{% static 'img/editar.png' %}" alt="Modificar" width="30px" />
+                </a>
+            </td>      
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
     <a class="btn btn-outline-primary m-3" href="{% url 'frases:frases_crear' %}" role="button">Agregar frases</a>
     <a class="btn btn-outline-primary m-3" href="{% url 'autores:autores_list' %}" role="button">Inicio</a>
 {% endblock content %}

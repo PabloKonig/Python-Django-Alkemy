@@ -1,5 +1,6 @@
 from django.db import models
 from autores.models import Autor
+from django.urls import reverse
 
 # Create your models here.
 class Frase(models.Model):

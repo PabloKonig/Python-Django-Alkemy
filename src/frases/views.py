@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from .models import Frase
 from django.views.generic.edit import CreateView, UpdateView
+from django.urls import reverse_lazy
 
 # Create your views here.
 class FrasesListView(generic.ListView):
@@ -14,10 +15,10 @@ class FrasesCreateView(CreateView):
     #fields = '__all__'
     fields = ['autor', 'contenido', 'fecha']
     template_name = 'frases/frases_edit.html'
-    success_url = 'http://localhost:8000/frases/'
+    success_url = reverse_lazy('frases:frases_list')
 
 class FrasesUpdateView(UpdateView):
     model = Frase
     fields = '__all__'
     template_name = 'frases/frases_edit.html'
-    success_url = 'http://localhost:8000/frases/'
+    success_url = reverse_lazy('frases:frases_list')

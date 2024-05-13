@@ -13,7 +13,7 @@ class Autor(models.Model):
     foto = models.ImageField(upload_to='autores_img/', default='autor_generico.png')
 
     def __str__(self):
-        return F"{self.nombre.upper()} - {self.creado}"
+        return F"{self.nombre.upper()}"
     
     def get_absolute_url(self):
         return reverse("autores:autor_por_id", kwargs={"id": self.id})
